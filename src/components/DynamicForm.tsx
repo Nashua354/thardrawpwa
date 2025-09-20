@@ -58,10 +58,11 @@ export default function DynamicForm({
             return null;
         }
 
+        const error = errors[field.id] as any;
         const commonProps = {
             field,
             register,
-            error: errors[field.id],
+            error,
         };
 
         switch (field.type) {
