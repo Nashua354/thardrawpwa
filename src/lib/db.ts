@@ -10,6 +10,7 @@ export interface Ticket {
     createdAt: string;
     paymentStatus: PaymentStatus;
     paymentRef?: string;
+    formData?: Record<string, any>;
 }
 
 const STORAGE_KEYS = {
@@ -62,7 +63,10 @@ export function getActiveTicket(): Ticket | null {
 /**
  * Create a new ticket
  */
-export function createTicket(data: { seed: string }): Ticket {
+export function createTicket(data: {
+    seed: string;
+    formData?: Record<string, any>
+}): Ticket {
     const userId = getUserId();
     const ticket: Ticket = {
         id: uuid(),
@@ -71,6 +75,7 @@ export function createTicket(data: { seed: string }): Ticket {
         seed: data.seed,
         createdAt: new Date().toISOString(),
         paymentStatus: 'pending',
+        formData: data.formData,
     };
 
     if (typeof window !== 'undefined') {

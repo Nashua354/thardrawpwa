@@ -1,21 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Toaster } from 'react-hot-toast';
-import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
+import Toast from '@/components/Toast';
 import "./globals.css";
 
+const appName = process.env.NEXT_PUBLIC_APP_NAME || 'Thar Draw';
+
 export const metadata: Metadata = {
-  title: "Thar Draw — Lucky Draw Demo",
-  description: "Enter in minutes. Ticket + payment flow simulated.",
+  title: `${appName} — Dynamic Form PWA Demo`,
+  description: "Schema-driven form PWA with admin interface and simulated payment flow",
   openGraph: {
-    title: "Thar Draw — Lucky Draw Demo",
-    description: "Enter in minutes. Ticket + payment flow simulated.",
-    images: ["/og.svg"],
+    title: `${appName} — Dynamic Form PWA Demo`,
+    description: "Schema-driven form PWA with admin interface and simulated payment flow",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Thar Draw — Lucky Draw Demo",
-    description: "Enter in minutes. Ticket + payment flow simulated.",
-    images: ["/og.svg"],
+    title: `${appName} — Dynamic Form PWA Demo`,
+    description: "Schema-driven form PWA with admin interface and simulated payment flow",
   },
   manifest: "/manifest.webmanifest",
   icons: {
@@ -49,8 +49,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
-        <Toaster position="top-center" />
-        <ServiceWorkerRegister />
+        <Toast />
       </body>
     </html>
   );

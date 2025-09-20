@@ -10,9 +10,15 @@ interface CheckoutModalProps {
     isOpen: boolean;
     onClose: () => void;
     onSuccess: () => void;
+    amount?: number;
 }
 
-export default function CheckoutModal({ isOpen, onClose, onSuccess }: CheckoutModalProps) {
+export default function CheckoutModal({
+    isOpen,
+    onClose,
+    onSuccess,
+    amount = Number(process.env.NEXT_PUBLIC_PRICE) || 499
+}: CheckoutModalProps) {
     const [isProcessing, setIsProcessing] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -85,11 +91,11 @@ export default function CheckoutModal({ isOpen, onClose, onSuccess }: CheckoutMo
                         <h3 className="font-semibold text-off-white mb-3">Order Summary</h3>
                         <div className="flex justify-between items-center">
                             <span className="text-sand">Lucky Draw Entry</span>
-                            <span className="text-off-white font-bold">₹499</span>
+                            <span className="text-off-white font-bold">₹{amount}</span>
                         </div>
                         <div className="flex justify-between items-center mt-2 pt-2 border-t border-sand/20">
                             <span className="font-semibold text-off-white">Total Due</span>
-                            <span className="text-xl font-bold text-accent-red">₹499</span>
+                            <span className="text-xl font-bold text-accent-red">₹{amount}</span>
                         </div>
                     </div>
 

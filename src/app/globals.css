@@ -93,3 +93,12 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--off-white);
 }
+
+/* Form element improvements */
+input[type="radio"] {
+  accent-color: var(--sand);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--sand);
+}

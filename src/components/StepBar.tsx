@@ -10,16 +10,21 @@ interface Step {
 interface StepBarProps {
     currentStep: number;
     className?: string;
+    steps?: Step[];
 }
 
-const steps: Step[] = [
+const defaultSteps: Step[] = [
     { number: 1, label: 'Form' },
     { number: 2, label: 'Ticket' },
     { number: 3, label: 'Pay' },
     { number: 4, label: 'Dashboard' },
 ];
 
-export default function StepBar({ currentStep, className = '' }: StepBarProps) {
+export default function StepBar({
+    currentStep,
+    className = '',
+    steps = defaultSteps
+}: StepBarProps) {
     return (
         <div className={`flex items-center justify-between max-w-sm mx-auto ${className}`}>
             {steps.map((step, index) => {

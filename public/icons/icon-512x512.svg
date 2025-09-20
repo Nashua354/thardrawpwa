@@ -1,7 +1,6 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect width="512" height="512" rx="64" fill="#D2B48C"/>
   <g transform="translate(102.4, 179.2) scale(6.144)">
-    <!-- SUV silhouette -->
     <path d="M2 8h28c1 0 2 1 2 2v3c0 1-1 2-2 2h-3c0 2-2 4-4 4s-4-2-4-4h-8c0 2-2 4-4 4s-4-2-4-4h-3c-1 0-2-1-2-2v-3c0-1 1-2 2-2z" fill="#111111"/>
     <path d="M6 2h20c1 0 2 1 2 2l2 3c0 1 0 1 0 1h-26s0 0 0-1l2-3c0-1 1-2 2-2z" fill="#111111"/>
     <circle cx="11" cy="15" r="2" fill="#111111"/>

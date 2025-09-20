@@ -12,7 +12,7 @@ interface AppShellProps {
 export default function AppShell({
     children,
     showBackButton = false,
-    title = 'THAR DRAW'
+    title = process.env.NEXT_PUBLIC_APP_NAME || 'THAR DRAW'
 }: AppShellProps) {
     const router = useRouter();
 

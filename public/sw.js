@@ -1,7 +1,9 @@
 const CACHE_NAME = 'thardraw-v1';
 const urlsToCache = [
     '/',
+    '/form',
     '/dashboard',
+    '/admin',
     '/terms',
     '/privacy',
     '/images/hero-suv.svg',
@@ -21,7 +23,6 @@ self.addEventListener('install', (event) => {
                 console.log('Cache install failed:', error);
             })
     );
-    // Skip waiting to activate immediately
     self.skipWaiting();
 });
 
@@ -38,18 +39,15 @@ self.addEventListener('activate', (event) => {
             );
         })
     );
-    // Take control of all clients immediately
     self.clients.claim();
 });
 
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', (event) => {
-    // Skip non-GET requests
     if (event.request.method !== 'GET') {
         return;
     }
 
-    // Skip cross-origin requests
     if (!event.request.url.startsWith(self.location.origin)) {
         return;
     }
@@ -57,37 +55,11 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                // Return cached version or fetch from network
                 return response || fetch(event.request).catch(() => {
-                    // If both cache and network fail, return offline page for navigation
                     if (event.request.mode === 'navigate') {
                         return caches.match('/');
                     }
                 });
             })
     );
-});
-
-// Handle background sync for offline actions (if needed in future)
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'background-sync') {
-        console.log('Background sync triggered');
-    }
-});
-
-// Handle push notifications (if needed in future)
-self.addEventListener('push', (event) => {
-    if (event.data) {
-        const data = event.data.json();
-        const options = {
-            body: data.body,
-            icon: '/icons/icon-192x192.svg',
-            badge: '/icons/icon-192x192.svg',
-            data: data.data
-        };
-
-        event.waitUntil(
-            self.registration.showNotification(data.title, options)
-        );
-    }
 });

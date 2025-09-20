@@ -87,6 +87,20 @@ export default function TicketCard({ ticket, onShare }: TicketCardProps) {
                         {ticket.paymentRef || '—'}
                     </div>
                 </div>
+
+                {ticket.formData && (
+                    <div>
+                        <label className="text-sm text-sand/70 font-medium">Entry Details</label>
+                        <div className="mt-1 text-sm text-off-white/80">
+                            {ticket.formData.full_name && (
+                                <div>Name: {ticket.formData.full_name}</div>
+                            )}
+                            {ticket.formData.email && (
+                                <div>Email: {ticket.formData.email}</div>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

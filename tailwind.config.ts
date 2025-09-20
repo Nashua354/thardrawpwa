@@ -21,6 +21,7 @@ const config: Config = {
             animation: {
                 'float': 'float 3s ease-in-out infinite',
                 'confetti': 'confetti 2s ease-out infinite',
+                'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
             },
             keyframes: {
                 float: {
@@ -30,6 +31,10 @@ const config: Config = {
                 confetti: {
                     '0%': { transform: 'translateY(0px) rotate(0deg)', opacity: '1' },
                     '100%': { transform: 'translateY(-100px) rotate(360deg)', opacity: '0' },
+                },
+                'pulse-soft': {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0.5' },
                 },
             },
             spacing: {
