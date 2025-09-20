@@ -1,0 +1,36 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dune1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D2B48C" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#D2B48C" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="dune2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D2B48C" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D2B48C" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="dune3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D2B48C" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#D2B48C" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background dunes (furthest) -->
+  <path d="M0 300 Q200 250 400 280 T800 300 V400 H0 Z" fill="url(#dune3)"/>
+  
+  <!-- Middle dunes -->
+  <path d="M0 320 Q150 270 300 300 Q450 330 600 310 Q700 300 800 320 V400 H0 Z" fill="url(#dune2)"/>
+  
+  <!-- Foreground dunes (closest) -->
+  <path d="M0 350 Q100 310 250 340 Q400 370 550 350 Q650 340 800 360 V400 H0 Z" fill="url(#dune1)"/>
+  
+  <!-- Subtle texture dots -->
+  <g opacity="0.2">
+    <circle cx="120" cy="280" r="1" fill="#D2B48C"/>
+    <circle cx="340" cy="320" r="1" fill="#D2B48C"/>
+    <circle cx="580" cy="290" r="1" fill="#D2B48C"/>
+    <circle cx="720" cy="340" r="1" fill="#D2B48C"/>
+    <circle cx="200" cy="360" r="0.5" fill="#D2B48C"/>
+    <circle cx="450" cy="330" r="0.5" fill="#D2B48C"/>
+    <circle cx="680" cy="310" r="0.5" fill="#D2B48C"/>
+  </g>
+</svg>

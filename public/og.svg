@@ -1,0 +1,40 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Dunes overlay -->
+  <g opacity="0.3">
+    <path d="M0 450 Q300 400 600 430 T1200 450 V630 H0 Z" fill="#D2B48C"/>
+    <path d="M0 500 Q200 460 400 480 Q600 500 800 485 Q900 480 1200 500 V630 H0 Z" fill="#D2B48C" opacity="0.7"/>
+  </g>
+  
+  <!-- SUV silhouette -->
+  <g transform="translate(750, 200) scale(2.5)" opacity="0.8">
+    <path d="M2 8h28c1 0 2 1 2 2v3c0 1-1 2-2 2h-3c0 2-2 4-4 4s-4-2-4-4h-8c0 2-2 4-4 4s-4-2-4-4h-3c-1 0-2-1-2-2v-3c0-1 1-2 2-2z" fill="#F7F4EF"/>
+    <path d="M6 2h20c1 0 2 1 2 2l2 3c0 1 0 1 0 1h-26s0 0 0-1l2-3c0-1 1-2 2-2z" fill="#F7F4EF"/>
+    <circle cx="11" cy="15" r="2" fill="#F7F4EF"/>
+    <circle cx="21" cy="15" r="2" fill="#F7F4EF"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="100" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="96" font-weight="bold" fill="#F7F4EF" letter-spacing="-0.02em">
+    THAR DRAW
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="280" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#D2B48C" opacity="0.9">
+    Lucky Draw Demo
+  </text>
+  
+  <!-- Tagline -->
+  <text x="100" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#F7F4EF" opacity="0.8">
+    Enter in minutes. Ticket + payment flow simulated.
+  </text>
+</svg>

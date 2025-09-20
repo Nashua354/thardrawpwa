@@ -1,0 +1,28 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.9">
+    <!-- Main body -->
+    <path d="M60 120h280c8 0 15 6 15 14v20c0 8-7 14-15 14h-20c-2 11-11 20-23 20s-21-9-23-20h-134c-2 11-11 20-23 20s-21-9-23-20h-20c-8 0-15-6-15-14v-20c0-8 7-14 15-14z" fill="currentColor"/>
+    
+    <!-- Cabin -->
+    <path d="M90 80h220c6 0 12 3 16 8l14 20c2 3 3 6 3 10v2h-266v-2c0-4 1-7 3-10l14-20c4-5 10-8 16-8z" fill="currentColor"/>
+    
+    <!-- Windshield -->
+    <path d="M110 85h180l-10 30h-160l-10-30z" fill="currentColor" opacity="0.7"/>
+    
+    <!-- Wheels -->
+    <circle cx="120" cy="168" r="22" fill="currentColor"/>
+    <circle cx="280" cy="168" r="22" fill="currentColor"/>
+    <circle cx="120" cy="168" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+    <circle cx="280" cy="168" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+    
+    <!-- Details -->
+    <rect x="95" y="95" width="15" height="8" rx="2" fill="currentColor" opacity="0.6"/>
+    <rect x="290" y="95" width="15" height="8" rx="2" fill="currentColor" opacity="0.6"/>
+    
+    <!-- Grille -->
+    <rect x="340" y="130" width="8" height="15" rx="1" fill="currentColor" opacity="0.8"/>
+    
+    <!-- Spare tire -->
+    <circle cx="350" cy="140" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+  </g>
+</svg>
