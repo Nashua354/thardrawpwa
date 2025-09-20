@@ -69,7 +69,7 @@ export type FormSchema = z.infer<typeof FormSchema>;
 
 // Default Example Schema
 export const DEFAULT_FORM_SCHEMA: FormSchema = {
-    version: "1.0",
+    version: "2.0",
     title: "Lucky Draw Entry",
     description: "Enter your details for the lucky draw",
     hidden: {
@@ -85,15 +85,7 @@ export const DEFAULT_FORM_SCHEMA: FormSchema = {
             label: "Full Name",
             required: true,
             placeholder: "Enter your full name",
-            hint: "Your legal name as it appears on ID"
-        },
-        {
-            id: "email",
-            type: "email",
-            label: "Email Address",
-            required: true,
-            placeholder: "your.email@example.com",
-            hint: "We'll send updates to this email"
+            hint: "Your legal name as it appears on official documents"
         },
         {
             id: "phone",
@@ -101,75 +93,55 @@ export const DEFAULT_FORM_SCHEMA: FormSchema = {
             label: "Phone Number",
             required: true,
             placeholder: "+91 98765 43210",
-            hint: "10-digit mobile number"
+            hint: "10-digit mobile number for verification"
         },
         {
-            id: "age",
-            type: "number",
-            label: "Age",
-            required: true,
-            min: 18,
-            max: 100,
-            hint: "Must be 18+ to participate"
+            id: "email",
+            type: "email",
+            label: "Email Address",
+            required: false,
+            placeholder: "your.email@example.com",
+            hint: "Optional - We'll send updates if provided"
         },
         {
-            id: "city",
-            type: "select",
-            label: "City",
-            required: true,
-            options: [
-                { value: "mumbai", label: "Mumbai" },
-                { value: "delhi", label: "Delhi" },
-                { value: "bangalore", label: "Bangalore" },
-                { value: "chennai", label: "Chennai" },
-                { value: "kolkata", label: "Kolkata" },
-                { value: "hyderabad", label: "Hyderabad" },
-                { value: "pune", label: "Pune" },
-                { value: "ahmedabad", label: "Ahmedabad" },
-                { value: "other", label: "Other" }
-            ]
+            id: "page_break_1",
+            type: "divider"
         },
         {
-            id: "experience",
+            id: "income_info",
+            type: "info",
+            label: "Income Information",
+            hint: "This information helps us understand our audience better and is kept confidential."
+        },
+        {
+            id: "income_bracket",
             type: "radio",
-            label: "Driving Experience",
+            label: "Annual Income Bracket",
             required: true,
             options: [
-                { value: "beginner", label: "Beginner (0-2 years)" },
-                { value: "intermediate", label: "Intermediate (3-5 years)" },
-                { value: "experienced", label: "Experienced (5+ years)" }
-            ]
-        },
-        {
-            id: "interests",
-            type: "multiselect",
-            label: "Interests",
-            options: [
-                { value: "off_road", label: "Off-road driving" },
-                { value: "adventure", label: "Adventure sports" },
-                { value: "travel", label: "Travel" },
-                { value: "photography", label: "Photography" },
-                { value: "camping", label: "Camping" }
-            ]
-        },
-        {
-            id: "newsletter",
-            type: "checkbox",
-            label: "Subscribe to newsletter",
-            hint: "Get updates about future contests and offers"
+                { value: "below_5", label: "Below ₹5 LPA" },
+                { value: "5_to_10", label: "₹5 LPA - ₹10 LPA" },
+                { value: "10_to_20", label: "₹10 LPA - ₹20 LPA" },
+                { value: "20_to_30", label: "₹20 LPA - ₹30 LPA" },
+                { value: "30_to_40", label: "₹30 LPA - ₹40 LPA" },
+                { value: "40_to_50", label: "₹40 LPA - ₹50 LPA" },
+                { value: "above_50", label: "₹50 LPA+" }
+            ],
+            hint: "Select your current annual income range"
         },
         {
             id: "terms",
             type: "checkbox",
-            label: "I agree to the Terms & Conditions",
+            label: "I agree to the Terms & Conditions and Privacy Policy",
             required: true,
-            showWhen: "newsletter != undefined"
+            hint: "Required to participate in the lucky draw"
         },
         {
-            id: "info_note",
-            type: "info",
-            label: "Contest Information",
-            hint: "Winner will be announced on social media. Entry fee is non-refundable."
+            id: "marketing_consent",
+            type: "checkbox",
+            label: "I consent to receive marketing communications",
+            required: false,
+            hint: "Optional - You can unsubscribe anytime"
         }
     ],
     afterSubmit: {
