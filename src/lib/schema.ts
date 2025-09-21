@@ -12,6 +12,7 @@ export type FieldType =
     | 'radio'
     | 'checkbox'
     | 'date'
+    | 'file'
     | 'info'
     | 'divider'
     | 'hidden';
@@ -19,7 +20,7 @@ export type FieldType =
 // Field Schema
 export const FieldSchema = z.object({
     id: z.string(),
-    type: z.enum(['text', 'textarea', 'email', 'phone', 'number', 'select', 'multiselect', 'radio', 'checkbox', 'date', 'info', 'divider', 'hidden']),
+    type: z.enum(['text', 'textarea', 'email', 'phone', 'number', 'select', 'multiselect', 'radio', 'checkbox', 'date', 'file', 'info', 'divider', 'hidden']),
     label: z.string().optional(),
     required: z.boolean().optional(),
     placeholder: z.string().optional(),
@@ -39,11 +40,14 @@ export type Field = z.infer<typeof FieldSchema>;
 
 // Action Types
 export const ActionSchema = z.object({
-    type: z.enum(['navigate', 'localStore', 'webhook']),
+    type: z.enum(['navigate', 'localStore', 'webhook', 'whatsapp']),
     to: z.string().optional(), // for navigate
     key: z.string().optional(), // for localStore
     url: z.string().optional(), // for webhook
     method: z.enum(['GET', 'POST', 'PUT']).optional(), // for webhook
+    whatsappTo: z.string().optional(), // for whatsapp - recipient number
+    whatsappFrom: z.string().optional(), // for whatsapp - sender number
+    whatsappTemplate: z.string().optional(), // for whatsapp - message template
 });
 
 export type Action = z.infer<typeof ActionSchema>;
@@ -96,12 +100,38 @@ export const DEFAULT_FORM_SCHEMA: FormSchema = {
             hint: "10-digit mobile number for verification"
         },
         {
+            id: "reference_phone",
+            type: "phone",
+            label: "Reference Mobile Number",
+            required: false,
+            placeholder: "+91 98765 43210",
+            hint: "Optional - Alternative contact number"
+        },
+        {
             id: "email",
             type: "email",
             label: "Email Address",
             required: false,
             placeholder: "your.email@example.com",
             hint: "Optional - We'll send updates if provided"
+        },
+        {
+            id: "selfie",
+            type: "file",
+            label: "Upload Selfie",
+            required: true,
+            hint: "Please upload a clear selfie for verification"
+        },
+        {
+            id: "has_car",
+            type: "radio",
+            label: "Do you have a car?",
+            required: true,
+            options: [
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" }
+            ],
+            hint: "Select whether you currently own a car"
         },
         {
             id: "page_break_1",
@@ -128,13 +158,6 @@ export const DEFAULT_FORM_SCHEMA: FormSchema = {
                 { value: "above_50", label: "₹50 LPA+" }
             ],
             hint: "Select your current annual income range"
-        },
-        {
-            id: "terms",
-            type: "checkbox",
-            label: "I agree to the Terms & Conditions and Privacy Policy",
-            required: true,
-            hint: "Required to participate in the lucky draw"
         },
         {
             id: "marketing_consent",
@@ -193,6 +216,12 @@ export function generateZodSchema(fields: Field[]): z.ZodObject<any> {
                 break;
             case 'checkbox':
                 fieldSchema = z.boolean();
+                break;
+            case 'file':
+                fieldSchema = z.any().refine((file) => {
+                    if (!field.required) return true;
+                    return file instanceof File || (typeof file === 'string' && file.length > 0);
+                }, 'File is required');
                 break;
             default:
                 fieldSchema = z.string();

@@ -1,8 +1,8 @@
 {
-    "name": "Thar Draw",
+    "name": "Thar Draw - Lucky Draw PWA",
     "short_name": "TharDraw",
-    "description": "Dynamic form-driven lucky draw PWA demo",
-    "start_url": "/",
+    "description": "Dynamic form-driven lucky draw with admin interface. Enter contests, manage entries, and simulate payments.",
+    "start_url": "/?source=pwa",
     "display": "standalone",
     "background_color": "#111111",
     "theme_color": "#111111",

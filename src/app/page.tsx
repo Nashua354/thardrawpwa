@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronDownIcon, CheckIcon } from '@heroicons/react/24/outline';
 import AppShell from '@/components/AppShell';
 import Hero from '@/components/Hero';
+import InstallButton from '@/components/InstallButton';
 import { getUserId } from '@/lib/db';
 import { uuid } from '@/lib/ids';
 
@@ -72,6 +73,11 @@ export default function OnboardPage() {
               </p>
             </div>
           )}
+        </div>
+
+        {/* Install App Button */}
+        <div className="flex justify-center">
+          <InstallButton />
         </div>
 
         {/* Admin Link */}

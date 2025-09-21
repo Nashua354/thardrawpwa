@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { markPayment } from '@/lib/db';
+import { markPayment, getActiveTicket } from '@/lib/db';
 import { shortId } from '@/lib/ids';
 import { showToast } from '@/lib/toast';
+import { triggerWhatsAppConfirmation } from '@/lib/whatsapp';
 
 interface CheckoutModalProps {
     isOpen: boolean;
@@ -42,10 +43,26 @@ export default function CheckoutModal({
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         const paymentRef = `pay_demo_${shortId()}`;
-        markPayment('success', paymentRef);
+        const updatedTicket = markPayment('success', paymentRef);
+
+        // Trigger WhatsApp confirmation
+        if (updatedTicket && updatedTicket.formData) {
+            try {
+                triggerWhatsAppConfirmation(
+                    updatedTicket.formData,
+                    updatedTicket.ticketId,
+                    paymentRef
+                );
+                showToast.success('Payment successful! WhatsApp confirmation sent.');
+            } catch (error) {
+                console.error('WhatsApp confirmation failed:', error);
+                showToast.success('Payment successful!');
+            }
+        } else {
+            showToast.success('Payment successful!');
+        }
 
         setIsProcessing(false);
-        showToast.success('Payment successful!');
         onSuccess();
     };
 

@@ -17,6 +17,7 @@ import CheckboxField from './FieldControls/CheckboxField';
 import MultiSelectField from './FieldControls/MultiSelectField';
 import DateField from './FieldControls/DateField';
 import NumberField from './FieldControls/NumberField';
+import FileField from './FieldControls/FileField';
 import InfoField from './FieldControls/InfoField';
 
 interface DynamicFormProps {
@@ -95,6 +96,15 @@ export default function DynamicForm({
 
             case 'date':
                 return <DateField key={field.id} {...commonProps} />;
+
+            case 'file':
+                return (
+                    <FileField
+                        key={field.id}
+                        {...commonProps}
+                        control={control}
+                    />
+                );
 
             case 'info':
             case 'divider':

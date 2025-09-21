@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Toast from '@/components/Toast';
+import InstallPrompt from '@/components/InstallPrompt';
+import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
 import "./globals.css";
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME || 'Thar Draw';
@@ -50,6 +52,8 @@ export default function RootLayout({
       <body className="antialiased">
         {children}
         <Toast />
+        <InstallPrompt />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
